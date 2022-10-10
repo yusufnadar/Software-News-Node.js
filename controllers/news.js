@@ -6,7 +6,7 @@ async function get(req, res) {
     var page = req.params.page;
     const options = {
         method: 'GET',
-        url: page == null ? `https://www.techradar.com/news/software` : `https://www.techradar.com/news/software/page/${page}`
+        url: page == null ? process.env.BASE_URL : `${process.env.BASE_URL}/page/${page}`
     }
     const rest = await X(options);
     const $ = cheerio.load(rest.data);
